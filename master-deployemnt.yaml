@@ -36,6 +36,7 @@ spec:
       containers:
         - name: second-node
           image: pavankumar07s/kube_first_app:2
+          imagePullPolicy: Always
           livenessProbe:
             httpGet:
               path: /
