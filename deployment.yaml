@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: second-app-deployment
+spec:
+  # ye dployement ke liye hai
+  replicas: 1
+  selector:
+    matchLabels:
+      app: second-app
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: second-app
+        tier: backend
+    spec:
+      # spec of individual pods
+      containers:
+        - name: second-node
+          image: pavankumar07s/kube_first_app:2
+          # - name: ...
+          #   image: ...
+          ports:
+            - containerPort: 80
