@@ -1,0 +1,24 @@
+--------------------------imperative way------------------------------------------------------
+0.microk8s dashboard-proxy
+0.1.microk8s start
+1.microk8s kubectl create deployment firstapp --image=pavankumar07s/kube_first_app
+2.microk8s kubectl get pods
+2.5.microk8s kubectl get deployment
+3.microk8s kubectl expose deployment firstapp --type=LoadBalancer --port=8080
+4.microk8s kubectl get services
+5.microk8s kubectl scale --replicas=3 deployment/firstapp 
+6.microk8s kubectl set image deployment/firstapp kube-first-app-mpht7=pavankumar07s/kube_first_app:2 //always remember to change the tag of docker file and push again to docker hub,vaise ye command use karte hai new image to spin karne ke liye
+7.microk8s kubectl rollout status deployment/firstapp //to check the rollout status of our app
+8.microk8s kubectl rollout undo deployment/firstapp //rollback karlo agar koi faliure hota hai
+9.microk8s kubectl rollout history deployment/firstapp //history of rollout yaha se dekh sakte hai
+10.microk8s kubectl rollout history deployment/firstapp --revision={number that we can see in the history}//this helps to check the information of certain revision
+11.microk8s kubectl rollout history deployment/firstapp --to-revision={number that we have to rollback}
+12.microk8s kubectl port-forward pod/firstapp-7678d5b78b-9pmmt 5000:8080
+13.microk8s kubectl delete service my-service
+14.microk8s kubectl delete deployment my-app
+
+
+-------------------------------------------decelarative way--------------------------------------------------------------
+1.microk8s kubectl apply -f=deployment.yaml 
+2.microk8s kubectl apply -f=service.yaml 
+3.microk8s kubectl delete -f=deployment.yaml,service.yaml
